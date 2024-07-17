@@ -16,14 +16,11 @@ pipeline {
         }
         stage('OWASP Dependency-Check Vulnerabilities') {
             steps {
-                dependencyCheck additionalArguments: ''' 
-                            -o './'
-                            -s './'
-                            -f 'ALL' 
-                            --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
-                
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
+				dependencyCheck additionalArguments: '--format HTML --format XML --suppression suppression.xml', 
+				
+				// MUST MATCH THE FILE NAME
+				odcInstallation: 'OWASP DEPENDENCY CHECK'
+			}
         }
         stage('Deliver') {
             steps {
