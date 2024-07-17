@@ -1,5 +1,5 @@
 pipeline {
-
+    agent default
     stages {
         stage('Build') { 
             steps {
