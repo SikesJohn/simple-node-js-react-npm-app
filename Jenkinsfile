@@ -19,7 +19,7 @@ pipeline {
 				dependencyCheck additionalArguments: '--format HTML --format XML --suppression suppression.xml', 
 				
 				// MUST MATCH THE FILE NAME
-				odcInstallation: 'OWASP DEPENDENCY CHECK'
+				odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 			}
         }
         stage('Deliver') {
