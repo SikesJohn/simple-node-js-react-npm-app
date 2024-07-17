@@ -14,12 +14,12 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('OWASP Dependency-Check Vulnerabilities') {
+        stage('OWASP_Dependency-Check_Vulnerabilities') {
             steps {
 				dependencyCheck additionalArguments: '--format HTML --format XML --suppression suppression.xml', 
 				
 				// MUST MATCH THE FILE NAME
-				odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+				odcInstallation: 'OWASP_Dependency-Check_Vulnerabilities'
 			}
         }
         stage('Deliver') {
@@ -30,4 +30,9 @@ pipeline {
             }
         }
     }
+    post {
+		success {
+			dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+		}
+	}
 }
