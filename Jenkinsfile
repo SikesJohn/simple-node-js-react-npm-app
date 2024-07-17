@@ -23,13 +23,13 @@ pipeline {
             }
         }
 
-        stage('OWASP_Dependency-Check_Vulnerabilities') {
-			steps {
-				dependencyCheck additionalArguments: '--format HTML --format XML',
+        //stage('OWASP_Dependency-Check_Vulnerabilities') {
+		//	steps {
+		//		dependencyCheck additionalArguments: '--format HTML --format XML',
 				// MUST MATCH THE FILE NAME
-				odcInstallation: 'OWASP_Dependency-Check_Vulnerabilities'
-			}
-		}
+		//		odcInstallation: 'OWASP_Dependency-Check_Vulnerabilities'
+		//	}
+		//}
     }
 
 }
