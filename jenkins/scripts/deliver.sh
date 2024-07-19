@@ -19,9 +19,17 @@ echo 'of the previously run process (i.e. "npm start") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
 npm start &
-sleep 1
+sleep 5
 echo $! > .pidfile
 set +x
+
+
+# Health check to ensure the application is running
+echo 'Waiting for the application to be available...'
+until curl --output /dev/null --silent --head --fail http://localhost:3000; do
+    echo "Waiting for the application to start..."
+    sleep 5
+done
 
 echo 'Now...'
 echo 'Visit http://localhost:3000 to see your Node.js/React application in action.'
